@@ -7,8 +7,8 @@ public class CA1
     public static void main(String[] args)
     {
         //testing as go
-        int[] codes = {1,2,3,4,5,218};
-        int[] grades = {60,90,80,10,50,80};
+        int[] codes = {1,2,3,4,5,218,9,8};
+        int[] grades = {60,90,80,10,50,80,90,60};
 
         int[] FiveArray = selectFiveGrades(codes,grades);
         System.out.println(Arrays.toString(FiveArray));
@@ -41,23 +41,26 @@ public class CA1
         int secondMax = 0;
         for (int i = 0; i < grades.length ; i++)
         {
+            //if the subject is English, Math, Irish ot CSPE it will skip over and not look in at it
             if(codes[i] != 1 && codes[i] != 2 && codes[i] != 3 && codes[i] != 218)
             {
+                //if grade is grater than the max number
                 if(grades[i] > max)
                 {
-                    secondMax = max;
-                    max = grades[i];
+                    secondMax = max; //second max becomes the old max
+                    max = grades[i]; // max is updated to the new int
                 }
-                else if(grades[i] > max)
+                else if(grades[i] > secondMax)//if the grade isnt bigger then max but bigger than second max will go in here
                 {
+                    //second max updated
                     secondMax = grades[i];
                 }
             }
         }
-        //adding the max and second max
+
+        //adding the max and second max once the loop looking for it is finished
         selectedGrades[n] = max;
         selectedGrades[n+1] = secondMax;
-
 
         return selectedGrades;
     }
