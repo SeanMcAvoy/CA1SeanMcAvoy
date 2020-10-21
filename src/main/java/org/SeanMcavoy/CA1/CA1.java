@@ -26,23 +26,9 @@ public class CA1
                 //Arrays needed to save the data
                 int[] gradeCode = new int[8];
                 int[] grade = new int[8];
-                int g =0;
-                int gc = 0;
 
-                //loops Starts from 1 as we don't want the student number included!
-                for (int i = 1; i <dataSorter.length; i++)
-                {
-                    if(i % 2 !=0)//gradeCode
-                    {
-                        gradeCode[gc] = Integer.parseInt(dataSorter[i]);
-                        gc++; //gc goes up one so it doesn't put grade and code order out of place!
-                    }
-                    else if(i % 2 ==0)//grade (as its everySecond)
-                    {
-                        grade[g] = Integer.parseInt(dataSorter[i]);
-                        g++;
-                    }
-                }
+                //method To sort the data and put it in the correct Arrays
+                sortData(dataSorter,gradeCode,grade);
                 //array returned of the students 5 subjects
                 int [] selected5Grades = selectFiveGrades(gradeCode,grade);
                 //average calculated from the 5 grades.
@@ -123,5 +109,34 @@ public class CA1
         //needs the (double) as sum is going from int to double
         double average = (double) sum / selectedGrades.length;
         return average;
+    }
+
+    /**
+     * <h2>sortData</h2>
+     * Will sort the gradecode and grades into the correct array
+     * @param studentRecord is the students record of 8 subjects and 8 grades
+     * @param gradeCode
+     * @param grade
+     */
+    public static void sortData(String[] studentRecord,int[] gradeCode,int[] grade)
+    {
+        //Arrays needed to save the data
+        int g =0;
+        int gc = 0;
+
+        //loops Starts from 1 as we don't want the student number included!
+        for (int i = 1; i <studentRecord.length; i++)
+        {
+            if(i % 2 !=0)//gradeCode
+            {
+                gradeCode[gc] = Integer.parseInt(studentRecord[i]);
+                gc++; //gc goes up one so it doesn't put grade and code order out of place!
+            }
+            else if(i % 2 ==0)//grade (as its everySecond)
+            {
+                grade[g] = Integer.parseInt(studentRecord[i]);
+                g++;
+            }
+        }
     }
 }
