@@ -6,12 +6,7 @@ public class CA1
 {
     public static void main(String[] args)
     {
-        //testing as go
-        int[] codes = {1,2,3,4,5,218,9,8};
-        int[] grades = {60,90,80,10,50,80,90,60};
-
-        int[] FiveArray = selectFiveGrades(codes,grades);
-        System.out.println(Arrays.toString(FiveArray));
+        System.out.println("Student Number \t Average Value");
 
     }
 
