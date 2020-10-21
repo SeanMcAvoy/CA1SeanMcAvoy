@@ -1,12 +1,58 @@
 package org.SeanMcavoy.CA1;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class CA1
 {
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) throws FileNotFoundException {
         System.out.println("Student Number \t Average Value");
+
+        File jcRecords = new File("JC_Results.txt");
+        Scanner sc = new Scanner(jcRecords);
+
+
+        //Will continue until there is notting left in the file.
+        while(sc.hasNextLine())
+        {
+            //pulls a students full record in
+            String jcData = sc.nextLine();
+            String[] dataSorter = jcData.split(","); //Splits the data by comas and makes it easier to sort.
+
+            //changes string numbers to useable ints
+            int studentNumber = Integer.parseInt(dataSorter[0]);
+
+            //Arrays needed to save the data
+            int[] gradeCode = new int[8];
+            int[] grade = new int[8];
+            int g =0;
+            int gc = 0;
+
+            //loops Starts from 1 as we don't want the student number included!
+            for (int i = 1; i <dataSorter.length; i++)
+            {
+                if(i % 2 !=0)//gradeCode
+                {
+                    gradeCode[gc] = Integer.parseInt(dataSorter[i]);
+                    gc++; //gc goes up one so it doesn't put grade and code order out of place!
+                }
+                else if(i % 2 ==0)//grade (as its everySecond)
+                {
+                    grade[g] = Integer.parseInt(dataSorter[i]);
+                    g++;
+                }
+            }
+
+
+        }
+        sc.close();
+
+
+
+
 
     }
 
