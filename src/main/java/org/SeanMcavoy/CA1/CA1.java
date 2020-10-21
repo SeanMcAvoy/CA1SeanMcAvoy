@@ -1,9 +1,17 @@
 package org.SeanMcavoy.CA1;
 
+import java.util.Arrays;
+
 public class CA1
 {
     public static void main(String[] args)
     {
+        //testing as go
+        int[] codes = {1,2,3,4,5,218};
+        int[] grades = {60,90,80,10,50,80};
+
+        int[] FiveArray = selectFiveGrades(codes,grades);
+        System.out.println(Arrays.toString(FiveArray));
 
     }
 
@@ -18,25 +26,44 @@ public class CA1
         //Stores the Five highest Grades excluding CSPE
         int [] selectedGrades = new int[5];
 
-
-        for (int i = 0; i < codes.length ; i++)
+        int n = 0; // Stop elements replacing each other.
+        for(int i = 0; i < codes.length ; i++)
         {
-            int n = 0; // Stop elements replacing each other.
             //adding Math, English and Irish to the array
             if(codes[i] == 1 || codes[i] == 2 || codes[i] == 3)
             {
-                grades[i] = selectedGrades[n];
+                selectedGrades[n] = grades[i];
                 n++;
             }
         }
-
+        //Finding the Two Highest Grades
+        int max = 0;
+        int secondMax = 0;
+        for (int i = 0; i < grades.length ; i++)
+        {
+            if(codes[i] != 1 && codes[i] != 2 && codes[i] != 3 && codes[i] != 218)
+            {
+                if(grades[i] > max)
+                {
+                    secondMax = max;
+                    max = grades[i];
+                }
+                else if(grades[i] > max)
+                {
+                    secondMax = grades[i];
+                }
+            }
+        }
+        //adding the max and second max
+        selectedGrades[n] = max;
+        selectedGrades[n+1] = secondMax;
 
 
         return selectedGrades;
     }
 
     /**
-     * Calulates Average of the Grades
+     * Calculates Average of the Grades
      * @param selectedGrades from method selectFiveGrades()
      * @return average as Double
      */
