@@ -1,4 +1,8 @@
 package org.SeanMcavoy.CA1;
+/*
+ * D00233349
+ * Sean McAvoy
+ */
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,39 +13,8 @@ public class CA1
     public static void main(String[] args)
     {
         System.out.println("Student Number \t Average Value");
-
         File jcRecords = new File("JC_Results.txt");
-        try {
-            Scanner sc = new Scanner(jcRecords);
-            //Will continue until there is notting left in the file.
-            while(sc.hasNext())
-            {
-                //pulls a students full record in
-                String jcData = sc.nextLine();
-                String[] dataSorter = jcData.split(","); //Splits the data by comas and makes it easier to sort.
-
-                //changes string numbers to useable ints
-                int studentNumber = Integer.parseInt(dataSorter[0]);
-
-                //Arrays needed to save the data
-                int[] gradeCode = new int[8];
-                int[] grade = new int[8];
-
-                //method To sort the data and put it in the correct Arrays
-                sortData(dataSorter,gradeCode,grade);
-                //array returned of the students 5 subjects
-                int [] selected5Grades = selectFiveGrades(gradeCode,grade);
-                //average calculated from the 5 grades.
-                double studentAverage = calulateAverage(selected5Grades);
-
-                //print student number and average
-                System.out.println(studentNumber+" \t\t\t "+studentAverage);
-            }
-            sc.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        processData(jcRecords);
     }
 
     /**
@@ -137,6 +110,42 @@ public class CA1
                 grade[g] = Integer.parseInt(studentRecord[i]);
                 g++;
             }
+        }
+    }
+
+    public static void processData(File jcRecords)
+    {
+        try {
+            Scanner sc = new Scanner(jcRecords);
+            //Will continue until there is notting left in the file.
+            while(sc.hasNext())
+            {
+                //pulls a students full record in
+                String jcData = sc.nextLine();
+                String[] dataSorter = jcData.split(","); //Splits the data by comas and makes it easier to sort.
+
+                //changes string numbers to useable ints
+                int studentNumber = Integer.parseInt(dataSorter[0]);
+
+                //Arrays needed to save the data
+                int[] gradeCode = new int[8];
+                int[] grade = new int[8];
+
+                //method To sort the data and put it in the correct Arrays
+                sortData(dataSorter,gradeCode,grade);
+
+                //array returned of the students 5 subjects
+                int [] selected5Grades = selectFiveGrades(gradeCode,grade);
+                //average calculated from the 5 grades.
+                double studentAverage = calulateAverage(selected5Grades);
+
+                //print student number and average
+                System.out.println(studentNumber+" \t\t\t "+studentAverage);
+            }
+            sc.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace(); System.out.println("File not Found");
         }
     }
 }
