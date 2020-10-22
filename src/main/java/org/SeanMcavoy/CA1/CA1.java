@@ -15,7 +15,7 @@ public class CA1
     {
         System.out.println("Student Number \t Average Value");
         File jcRecords = new File("JC_Results.txt");
-        processData(jcRecords);
+        processStudentRecord(jcRecords);
     }
 
     /**
@@ -73,7 +73,7 @@ public class CA1
      * @param selectedGrades from method selectFiveGrades()
      * @return average as Double
      */
-    private static double calulateAverage(int[] selectedGrades)
+    public static double calulateAverage(int[] selectedGrades)
     {
         int sum = 0;
         for (int elements : selectedGrades)
@@ -92,7 +92,7 @@ public class CA1
      * @param gradeCode
      * @param grade
      */
-    public static void sortData(String[] studentRecord,int[] gradeCode,int[] grade)
+    public static void sortStudentData(String[] studentRecord,int[] gradeCode,int[] grade)
     {
         //Arrays needed to save the data
         int g =0;
@@ -118,7 +118,7 @@ public class CA1
      *Scans and processes the students record
      * @param jcRecords .txt file pathName
      */
-    public static void processData(File jcRecords)
+    public static void processStudentRecord(File jcRecords)
     {
         try {
             Scanner sc = new Scanner(jcRecords);
@@ -137,7 +137,7 @@ public class CA1
                 int[] grade = new int[8];
 
                 //method To sort the data and put it in the correct Arrays
-                sortData(dataSorter,gradeCode,grade);
+                sortStudentData(dataSorter,gradeCode,grade);
 
                 //array returned of the students 5 subjects
                 int [] selected5Grades = selectFiveGrades(gradeCode,grade);

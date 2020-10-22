@@ -6,15 +6,22 @@ import org.junit.Test;
 public class CA1Test extends TestCase
 {
 
+    /**
+     * All Test For SelectFiveGrades()
+     */
     @Test
     public void testSelectFiveGrades() {
     }
 
     @Test
-    public void testSortData() {
+    public void testCalulateAverage() {
     }
 
     @Test
-    public void testProcessData() {
+    public void testSortStudentData() {
+    }
+
+    @Test
+    public void testProcessStudentRecord() {
     }
 }
