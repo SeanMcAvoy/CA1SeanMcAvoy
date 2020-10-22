@@ -2,6 +2,7 @@ package org.SeanMcavoy.CA1;
 /*
  * D00233349
  * Sean McAvoy
+ * GITHUB - https://github.com/SeanMcAvoy/CA1SeanMcAvoy.git
  */
 
 import java.io.File;
@@ -113,6 +114,10 @@ public class CA1
         }
     }
 
+    /**
+     *Scans and processes the students record
+     * @param jcRecords .txt file pathName
+     */
     public static void processData(File jcRecords)
     {
         try {
