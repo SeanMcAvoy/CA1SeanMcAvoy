@@ -13,9 +13,9 @@ public class CA1
 {
     public static void main(String[] args)
     {
-        System.out.println("Student Number \t Average Value");
+        System.out.println("Student Number \t Average Value"); //Header for the record table
         File jcRecords = new File("JC_Results.txt");
-        processStudentRecord(jcRecords);
+        processStudentRecord(jcRecords); //processing all the data
     }
 
     /**
@@ -28,7 +28,9 @@ public class CA1
     {
         //Stores the Five highest Grades excluding CSPE
         int [] selectedGrades = new int[5];
-
+        //Finding the Two Highest Grades
+        int max = 0;
+        int secondMax = 0;
         int n = 0; // Stop elements replacing each other.
         for(int i = 0; i < codes.length ; i++)
         {
@@ -38,30 +40,23 @@ public class CA1
                 selectedGrades[n] = grades[i];
                 n++;
             }
-        }
-        //Finding the Two Highest Grades
-        int max = 0;
-        int secondMax = 0;
-        for (int i = 0; i < grades.length ; i++)
-        {
             //if the subject is English, Math, Irish ot CSPE it will skip over and not look in at it
-            if(codes[i] != 1 && codes[i] != 2 && codes[i] != 3 && codes[i] != 218)
-            {
-                //if grade is grater than the max number
-                if(grades[i] > max)
+            else if(codes[i] != 1 && codes[i] != 2 && codes[i] != 3 && codes[i] != 218)
                 {
-                    secondMax = max; //second max becomes the old max
-                    max = grades[i]; // max is updated to the new int
+                    //if grade is grater than the max number
+                    if(grades[i] > max)
+                    {
+                        secondMax = max; //second max becomes the old max
+                        max = grades[i]; // max is updated to the new int
+                    }
+                    else if(grades[i] > secondMax)//if the grade isnt bigger then max but bigger than second max will go in here
+                    {
+                        //second max updated
+                        secondMax = grades[i];
+                    }
                 }
-                else if(grades[i] > secondMax)//if the grade isnt bigger then max but bigger than second max will go in here
-                {
-                    //second max updated
-                    secondMax = grades[i];
-                }
-            }
         }
-
-        //adding the max and second max once the loop looking for it is finished
+        //adding the max and second max once the loop finished so it doesnt overflow the Array
         selectedGrades[n] = max;
         selectedGrades[n+1] = secondMax;
 
