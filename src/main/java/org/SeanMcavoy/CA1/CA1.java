@@ -15,7 +15,7 @@ public class CA1
     {
         System.out.println("Student Number \t Average Value"); //Header for the record table
         File jcRecords = new File("JC_Results.txt");
-        processStudentRecord(jcRecords); //processing all the data
+        processStudentsRecord(jcRecords); //processing all the Students data
     }
 
     /**
@@ -93,8 +93,7 @@ public class CA1
         int g =0;
         int gc = 0;
 
-        //loops Starts from 1 as we don't want the student number included!
-        for (int i = 1; i <studentRecord.length; i++)
+        for (int i = 1; i <studentRecord.length; i++)//loops Starts from 1 as we don't want the student number included!
         {
             if(i % 2 !=0)//gradeCode
             {
@@ -112,40 +111,37 @@ public class CA1
     /**
      *Scans and processes the students record
      * @param jcRecords .txt file pathName
+     * FilePath is passed in
      */
-    public static void processStudentRecord(File jcRecords)
+    public static void processStudentsRecord(File jcRecords)
     {
         try {
             Scanner sc = new Scanner(jcRecords);
             //Will continue until there is notting left in the file.
             while(sc.hasNext())
             {
-                //pulls a students full record in
-                String jcData = sc.nextLine();
+                String jcData = sc.nextLine();//pulls a students full record in
                 String[] dataSorter = jcData.split(","); //Splits the data by comas and makes it easier to sort.
 
-                //changes string numbers to useable ints
+                //changes string numbers to usable ints
                 int studentNumber = Integer.parseInt(dataSorter[0]);
 
                 //Arrays needed to save the data
                 int[] gradeCode = new int[8];
                 int[] grade = new int[8];
+                sortStudentData(dataSorter,gradeCode,grade);//method (updates the Arrays gradeCode[] & grade[]) puts correct data into correct array
 
-                //method To sort the data and put it in the correct Arrays
-                sortStudentData(dataSorter,gradeCode,grade);
 
-                //array returned of the students 5 subjects
-                int [] selected5Grades = selectFiveGrades(gradeCode,grade);
-                //average calculated from the 5 grades.
-                double studentAverage = calulateAverage(selected5Grades);
+                int [] selected5Grades = selectFiveGrades(gradeCode,grade);//array returned of the students 5 subjects
+                double studentAverage = calulateAverage(selected5Grades);//average calculated from the 5 grades.
 
                 //print student number and average
                 System.out.println(studentNumber+" \t\t\t "+studentAverage);
             }
-            sc.close();
+            sc.close(); //Closes the Scanner
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace(); System.out.println("File not Found");
+            e.printStackTrace(); System.out.println("File not Found"); //inform the file cant be found
         }
     }
 }
