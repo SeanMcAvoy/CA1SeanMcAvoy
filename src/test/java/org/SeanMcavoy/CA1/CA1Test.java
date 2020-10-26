@@ -1,13 +1,9 @@
 package org.SeanMcavoy.CA1;
 
-import junit.framework.AssertionFailedError;
+
 import junit.framework.TestCase; //
 import org.junit.*;
-
-
 import java.io.File;
-import java.io.FileNotFoundException;
-
 import static org.junit.Assert.assertArrayEquals;
 
 public class CA1Test extends TestCase
@@ -119,7 +115,7 @@ public class CA1Test extends TestCase
     @Test
     public void testSortStudentData1()
     {
-        System.out.println("testSortStudentData1 - Testing the correct data is passed into the correct Array gradeCode & grade");
+        System.out.println("testSortStudentData1() - Testing the correct data is passed into the correct Array gradeCode & grade");
         String[] studentRecord = {"891234","1","65","2","58","3","45","4","60","5","50","12","48","42","42","46","60"};
         int[] gradeCode = new int[8];
         int[] grade = new int[8];
@@ -133,10 +129,11 @@ public class CA1Test extends TestCase
         assertArrayEquals(gradeExp,grade);
     }
 
+    /*Testing processStudentsRecords() */
     @Test
     public void testProcessStudentRecord1()
     {
-        System.out.println("processStudentRecord1() - Test the try Catch works correctly if the Fail path has the wrong name/  wrong path");
+        System.out.println("\nprocessStudentRecord1() - Test the try Catch works correctly if the Fail path has the wrong name/  wrong path");
         File jcRecords = new File("JC_Result.txt");
 
         try{
