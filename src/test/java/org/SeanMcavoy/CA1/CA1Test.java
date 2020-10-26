@@ -1,10 +1,12 @@
 package org.SeanMcavoy.CA1;
 
+import junit.framework.AssertionFailedError;
 import junit.framework.TestCase; //
 import org.junit.*;
 
 
 import java.io.File;
+import java.io.FileNotFoundException;
 
 import static org.junit.Assert.assertArrayEquals;
 
@@ -132,13 +134,18 @@ public class CA1Test extends TestCase
     }
 
     @Test
-    public void testProcessStudentRecord()
+    public void testProcessStudentRecord1()
     {
-        System.out.println("processStudentRecord");
-        File jcRecords = null;
-        CA1.processStudentsRecord(jcRecords);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("processStudentRecord1() - Test the try Catch works correctly if the Fail path has the wrong name/  wrong path");
+        File jcRecords = new File("JC_Result.txt");
+
+        try{
+            CA1.processStudentsRecord(jcRecords);
+
+        }catch (Exception exception){
+            Assert.fail();
+        }
+
     }
 
 }

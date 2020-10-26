@@ -141,7 +141,8 @@ public class CA1
             sc.close(); //Closes the Scanner
 
         } catch (FileNotFoundException e) {
-            e.printStackTrace(); System.out.println("File not Found"); //inform the file cant be found
+            //e.printStackTrace();
+            System.out.println("--File not Found--"); //inform the file cant be found
         }
     }
 }
