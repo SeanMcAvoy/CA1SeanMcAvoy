@@ -1,5 +1,6 @@
 package org.SeanMcavoy.CA1;
 /*
+ * CA1 JC results
  * D00233349
  * Sean McAvoy
  * GITHUB - https://github.com/SeanMcAvoy/CA1SeanMcAvoy.git
@@ -95,12 +96,12 @@ public class CA1
 
         for (int i = 1; i <studentRecord.length; i++)//loops Starts from 1 as we don't want the student number included!
         {
-            if(i % 2 !=0)//gradeCode
+            if(i % 2 != 0)//gradeCode
             {
                 gradeCode[gc] = Integer.parseInt(studentRecord[i]);
                 gc++; //gc goes up one so it doesn't put grade and code order out of place!
             }
-            else if(i % 2 ==0)//grade (as its everySecond)
+            else if(i % 2 == 0)//grade (as its everySecond)
             {
                 grade[g] = Integer.parseInt(studentRecord[i]);
                 g++;
