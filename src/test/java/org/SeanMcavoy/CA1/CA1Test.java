@@ -1,7 +1,11 @@
 package org.SeanMcavoy.CA1;
+/*
+ * D00233349
+ * Sean McAvoy
+ * GITHUB - https://github.com/SeanMcAvoy/CA1SeanMcAvoy.git
+ */
 
-
-import junit.framework.TestCase; //
+import junit.framework.TestCase;
 import org.junit.*;
 import java.io.File;
 import static org.junit.Assert.assertArrayEquals;
@@ -30,7 +34,7 @@ public class CA1Test extends TestCase
     @Test
     public void testSelectFiveGrades1()
     {
-        System.out.println("\ntestSelectFiveGrades1() - Making Sure Math, English, Irish are included");
+        System.out.println("\ntestSelectFiveGrades1() - Test Math Eng Irish are always added to the grades no mater if there grade is low");
         int[] codes = {1,2,3,4,5,6,7,8};
         int[] grades = {1,50,3,4,5,70,80,0};
         int[] expResult = {1,50,3,80,70};
@@ -41,7 +45,7 @@ public class CA1Test extends TestCase
     @Test
     public void testSelectFiveGrades2()
     {
-        System.out.println("testSelectFiveGrades2() - Test CSPE does not get included in the selected grades (even tho its the highest Grade)");
+        System.out.println("testSelectFiveGrades2() - Test CSPE is not included even tho its the highest grade.");
         int[] codes = {1,2,3,218,40,8,10,12};
         int[] grades = {90,20,30,95,30,70,80,40};
         int[] expResult = {90,20,30,80,70};
@@ -131,7 +135,7 @@ public class CA1Test extends TestCase
 
     /*Testing processStudentsRecords() */
     @Test
-    public void testProcessStudentRecord1()
+    public void testProcessStudentRecord1() //test if file cant be found
     {
         System.out.println("\nprocessStudentRecord1() - Test the try Catch works correctly if the Fail path has the wrong name/  wrong path");
         File jcRecords = new File("JC_Result.txt");
@@ -144,5 +148,4 @@ public class CA1Test extends TestCase
         }
 
     }
-
 }
